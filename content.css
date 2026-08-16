@@ -1,0 +1,388 @@
+/* ===== HTML Editor - Content Script Styles ===== */
+
+/* ---------- Toolbar ---------- */
+#he-toolbar {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid #334155;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#he-toolbar .he-btn {
+  background: #3b82f6;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 7px 14px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+#he-toolbar .he-btn:hover {
+  background: #2563eb;
+}
+
+#he-toolbar .he-btn:active {
+  transform: scale(0.97);
+}
+
+#he-toolbar .he-btn.he-btn-success {
+  background: #22c55e;
+}
+#he-toolbar .he-btn.he-btn-success:hover {
+  background: #16a34a;
+}
+
+#he-toolbar .he-btn.he-btn-warning {
+  background: #f59e0b;
+}
+#he-toolbar .he-btn.he-btn-warning:hover {
+  background: #d97706;
+}
+
+#he-toolbar .he-btn.he-btn-danger {
+  background: #ef4444;
+}
+#he-toolbar .he-btn.he-btn-danger:hover {
+  background: #dc2626;
+}
+
+#he-toolbar .he-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#he-toolbar .he-btn.he-active {
+  background: #f59e0b;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.3);
+}
+
+/* Close button */
+#he-toolbar .he-btn.he-btn-close {
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid #475569;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-left: 2px;
+}
+
+#he-toolbar .he-btn.he-btn-close:hover {
+  background: #ef4444;
+  color: #fff;
+  border-color: #ef4444;
+}
+
+#he-toolbar .he-btn.he-btn-minimize {
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid #475569;
+  padding: 6px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  margin-left: 2px;
+}
+
+#he-toolbar .he-btn.he-btn-minimize:hover {
+  background: #334155;
+  color: #e2e8f0;
+  border-color: #3b82f6;
+}
+
+/* ---------- Floating Ball ---------- */
+#he-float-ball {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 2px solid #3b82f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  z-index: 2147483647;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 0 1px rgba(59,130,246,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+#he-float-ball:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(59,130,246,0.3), 0 0 0 1px rgba(59,130,246,0.4);
+}
+
+#he-float-ball.he-ball-dragging {
+  cursor: grabbing;
+  transform: scale(1.15);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4), 0 0 0 2px rgba(59,130,246,0.5);
+  transition: none;
+}
+
+.he-ball-icon {
+  color: #3b82f6;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Consolas', 'Courier New', monospace;
+  line-height: 1;
+}
+
+.he-ball-dot {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #64748b;
+  border: 2px solid #0f172a;
+  transition: background 0.2s;
+}
+
+.he-ball-dot.he-on {
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34,197,94,0.7);
+}
+
+#he-toolbar .he-divider {
+  width: 1px;
+  height: 22px;
+  background: #334155;
+  margin: 0 2px;
+}
+
+#he-toolbar .he-label {
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  padding: 0 4px;
+}
+
+#he-toolbar .he-title {
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0 6px 0 2px;
+}
+
+#he-toolbar .he-title .he-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #64748b;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+#he-toolbar .he-title .he-dot.he-on {
+  background: #22c55e;
+  box-shadow: 0 0 6px rgba(34, 197, 94, 0.6);
+}
+
+/* ---------- Edit Mode ---------- */
+body.he-editing [contenteditable="true"]:focus {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+  cursor: text !important;
+}
+
+body.he-editing [contenteditable="true"] {
+  cursor: text !important;
+  caret-color: #3b82f6;
+}
+
+/* Text selection styles for contenteditable */
+body.he-editing [contenteditable="true"]::selection {
+  background: rgba(59, 130, 246, 0.35) !important;
+  text-shadow: none !important;
+}
+
+body.he-editing [contenteditable="true"] *::selection {
+  background: rgba(59, 130, 246, 0.35) !important;
+  text-shadow: none !important;
+}
+
+body.he-editing .he-selectable {
+  cursor: pointer;
+}
+
+body.he-editing .he-selectable:hover {
+  outline: 2px dashed #3b82f6 !important;
+  outline-offset: 2px;
+}
+
+/* Grabable cursor on selected element */
+.he-grabable {
+  cursor: grab !important;
+}
+
+body.he-editing .he-grabable:hover {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 1px;
+}
+
+/* ---------- Selection Box ---------- */
+#he-selection {
+  position: absolute;
+  border: 2px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.08);
+  pointer-events: none;
+  z-index: 2147483646;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.4);
+  transition: none;
+}
+
+#he-selection.he-hidden {
+  display: none;
+}
+
+/* Drag label on selection box */
+.he-drag-label {
+  position: absolute;
+  top: -30px;
+  left: -2px;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 6px 6px 6px 0;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.35);
+  letter-spacing: 0.3px;
+}
+
+.he-drag-label::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 6px solid #2563eb;
+  border-bottom: 5px solid transparent;
+}
+
+/* ---------- Resize Handles ---------- */
+.he-handle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border: 2px solid #3b82f6;
+  border-radius: 50%;
+  pointer-events: auto;
+  z-index: 2147483647;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.he-handle.he-nw  { top: -6px; left: -6px; cursor: nwse-resize; }
+.he-handle.he-n   { top: -6px; left: 50%; margin-left: -6px; cursor: ns-resize; }
+.he-handle.he-ne  { top: -6px; right: -6px; cursor: nesw-resize; }
+.he-handle.he-e   { top: 50%; right: -6px; margin-top: -6px; cursor: ew-resize; }
+.he-handle.he-se  { bottom: -6px; right: -6px; cursor: nwse-resize; }
+.he-handle.he-s   { bottom: -6px; left: 50%; margin-left: -6px; cursor: ns-resize; }
+.he-handle.he-sw  { bottom: -6px; left: -6px; cursor: nesw-resize; }
+.he-handle.he-w   { top: 50%; left: -6px; margin-top: -6px; cursor: ew-resize; }
+
+/* ---------- Hint Bar ---------- */
+#he-hint {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  background: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(8px);
+  color: #e2e8f0;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  border: 1px solid #334155;
+}
+
+#he-hint .he-hint-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#he-hint kbd {
+  background: #334155;
+  color: #f1f5f9;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-weight: 600;
+  border: 1px solid #475569;
+}
+
+/* ---------- Toast ---------- */
+#he-toast {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  z-index: 2147483647;
+  background: #22c55e;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-family: -apple-system, 'Segoe UI', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+
+#he-toast.he-show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+#he-toast.he-error {
+  background: #ef4444;
+}
+
+/* ---------- Dragging ---------- */
+.he-dragging {
+  opacity: 0.92;
+  cursor: grabbing !important;
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.25), 0 4px 12px rgba(0,0,0,0.12) !important;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
